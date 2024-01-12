@@ -68,19 +68,26 @@ function checkLogin() {
 }
 
 
+
+
 function  overlay() {
+document.getElementById('wait').innerHTML = 'Oops! no network, use free mode!';
+
+
     window.location.href="home.html";
 }
 
-function freemode() {
-    window.location.href="freemodevideos.html";
+
+   function freemode() {
+    document.getElementById('wait').innerHTML = '!Takes time, refresh and click free mode again';
+    
+const layer = document.getElementById('layer');
+
+layer.style.display="none";
+
 }
 
 
-
-
-
-
-
-
-
+function clickhere() {
+    window.location.href="freemode.html";
+}

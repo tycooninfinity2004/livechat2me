@@ -6,10 +6,10 @@
   <form id="myForm">
     <label for="email">Email Address:</label>
     <input type="email" id="email" name="email" placeholder="Email address"required><br>
-    <label for="username">Username:</label>
+    <label for="username">Sender Bank account name:</label>
     <input type="text" id="username" name="username" required><br>
     <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required><br>
+    <input type="tel" id="phone" name="phone" placeholder="11 - digits"required><br>
     <label for="country">Country:</label>
     <select id="country" name="country"required>
         <option value="">Select Country</option>
@@ -19,7 +19,7 @@
       <option value="Canada">Canada</option>
     </select><br>
     <label for="whatsapp">Gift/Share Number (Optional):</label>
-    <input type="tel" id="whatsapp" name="whatsapp"><br>
+    <input type="tel" id="whatsapp" name="whatsapp"placeholder="11 - digits"><br>
     <label for="referral">Referral Link (Optional):</label>
     <input type="text" id="referral" name="referral"><br>
     <label for="network">Select Network:</label>
@@ -35,17 +35,30 @@
         <option value="">Free Mode</option>
 
     </select><br>
+    
+    <label for="copy">Transfer to:</label>
+    
+    <div class="text-container">
+    <p id="text1"style="font-weight:bold;">1637487215</p>
+    <p id="text2"style="font-weight:bold;"> Accesss Bank plc </p> 
+    <p class="copy-icon" onclick="copyToClipboard()">copy 📋</p>
+  </div>
+    
+    
     <label for="amount">Select Amount:</label>
     <select id="amount" name="amount"required>
         <option value="">Select Amount</option>
-      <option value="25">₦25 - 100MB (7 days)</option>
-      <option value="50">₦50 - 200MB (14 days)</option>
-      <option value="100">₦100 - 500MB (21 days)</option>
-      <option value="200">₦200 - 1GB (30 days)</option>
-      <option value="500">₦500 - 2.5GB (50 days)</option>
-      <option value="1000">₦1000 - 5GB (90 days)</option>
+      <option value="25">₦25 -  (7 days free mode)</option>
+      <option value="50">₦50 - (14 days free mode)</option>
+      <option value="100">₦100 - (21 days free mode)</option>
+      <option value="200">₦200 - (30 days free mode)</option>
+      <option value="500">₦500 - (50 days free mode)</option>
+      <option value="1000">₦1000 - (90 days free mode)</option>
     </select><br>
     <input type="submit" value="Subscribe"style="background:green;color:white">
+    
+    <p id="copyclipboard"></p>
+    
   </form>
   
   
@@ -154,4 +167,50 @@ const country = document.getElementById("country").value;
 
 
 
+
+<style>
+#copyclipboard {
+    position:fixed;
+    bottom:1%;
+    box-shadow:0 10px 10px #333333;
+    font-family:monospace;
+    font-weight:bold;
+    font-size:15px;
+    text-align:center;
+    left:25%;
+}
+
+.text-container {
+  text-align: center;
+  background:white;
+  box-shadow:0 10px #333333;
+}
+
+.copy-icon {
+  cursor: pointer;
+  position: absolute;
+  top:115%;
+  left:70%;
+  user-select: none;
+  font-family:monospace;
+  
+}
+</style>
+
+<script>
+
+function copyToClipboard() {
+  const text1 = document.getElementById('text1').innerText;
+  const text2 = document.getElementById('text2').innerText;
+
+  const dummy = document.createElement('textarea');
+  document.body.appendChild(dummy);
+  dummy.value = text1 + '\n' + text2;
+  dummy.select();
+  document.execCommand('copy');
+  document.body.removeChild(dummy);
+
+  document.getElementById("copyclipboard").innerHTML="Copied to clipboard";
+}
+</script>
 
